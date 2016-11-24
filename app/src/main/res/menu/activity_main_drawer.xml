@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single" android:id="@+id/grupp">
+        <!--<item
+           android:id="@+id/itemla"
+           android:icon="@drawable/devices"
+           android:title="Telefon" />
+
+       <item
+           android:id="@+id/Bilgisayar"
+           android:icon="@drawable/classroompc"
+           android:title="Bilgisayar" />
+       <item
+           android:id="@+id/Bilgisayar_Parçaları"
+           android:icon="@drawable/pccomputerwithmonitor"
+           android:title="Bilgisayar Parçaları " />
+       <item
+           android:id="@+id/Foto_ve_Kamera"
+           android:icon="@drawable/photocamera"
+           android:title="Foto ve Kamera" />
+       <item
+           android:id="@+id/Tv_ve_Ev_Elektroniği"
+           android:icon="@drawable/television"
+           android:title="Tv ve Ev Elektroniği" />
+       <item
+           android:id="@+id/Ofis_Malzemeleri"
+           android:icon="@drawable/printer"
+           android:title="Ofis Malzemeleri" />
+       <item
+           android:id="@+id/Aksesuar"
+           android:icon="@drawable/music"
+           android:title="Aksesuar" />
+       <item
+           android:id="@+id/Oyun_ve_Hobi"
+           android:icon="@drawable/gamecontrolpc"
+           android:title="Oyun ve Hobi" />
+       <item
+           android:id="@+id/Ev_Aletleri"
+           android:icon="@drawable/hairdryer"
+           android:title="Ev Aletleri" />-->
+    </group>
+</menu>
