@@ -1,42 +1,42 @@
 package com.electroniz.myapplication;
+        import android.content.Intent;
+        import android.content.SharedPreferences;
+        import android.graphics.Bitmap;
+        import android.graphics.BitmapFactory;
+        import android.graphics.Color;
+        import android.os.AsyncTask;
+        import android.os.Bundle;
+        import android.support.design.widget.NavigationView;
+        import android.support.v4.view.GravityCompat;
+        import android.support.v4.widget.DrawerLayout;
+        import android.support.v7.app.ActionBarDrawerToggle;
+        import android.support.v7.app.AppCompatActivity;
+        import android.support.v7.widget.Toolbar;
+        import android.util.Log;
+        import android.view.Menu;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.ImageView;
+        import android.widget.LinearLayout;
+        import android.widget.TextView;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+        import com.google.gson.Gson;
 
-import com.google.gson.Gson;
+        import java.io.IOException;
+        import java.io.InputStream;
+        import java.util.ArrayList;
+        import java.util.Arrays;
+        import java.util.List;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import timber.log.Timber;
+        import okhttp3.OkHttpClient;
+        import okhttp3.Request;
+        import okhttp3.Response;
+        import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-ImageView imglogo;
+    ImageView imglogo;
     private String  JSON_URLkategori= "http://techhere.somee.com/api/KategoriApi/Kategoriler";
     private String  JSON_URLyeniurun= "http://techhere.somee.com/api/UrunApi/YeniUrunler";
     private OkHttpClient client = new OkHttpClient();
@@ -50,6 +50,8 @@ ImageView imglogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
 
         imglogo=(ImageView)findViewById(R.id.sliderlogo);
      /*   imglogo.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +119,7 @@ ImageView imglogo;
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.giris) {
-            Intent intent = new Intent(MainActivity.this, Giris.class);
+            Intent intent = new Intent(MainActivity.this, profil.class);
             startActivity(intent);
 
             return true;
@@ -126,7 +128,18 @@ ImageView imglogo;
 
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        SharedPreferences settings =getApplication().getSharedPreferences("kayıt", 0);
+        if(settings.getString("userid",null)==null){
+            Intent intent = new Intent(MainActivity.this, Giris.class);
+            startActivity(intent);
+        }
 
+
+    }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -177,7 +190,7 @@ ImageView imglogo;
         return true;
     }
     public class asyn_webservice extends AsyncTask< Object,Void,Object> {
-        String jsonData;
+            String jsonData;
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
 
@@ -230,7 +243,7 @@ ImageView imglogo;
                 e.printStackTrace();
             }
             try {
-                jsonData = run(JSON_URLyeniurun);
+                    jsonData = run(JSON_URLyeniurun);
                 Timber.i("JSON VERİMİZ : > " + jsonData);
                 if (null != jsonData) {
                     Timber.i("jsonData null değil ..");
@@ -285,17 +298,13 @@ ImageView imglogo;
                     btn_sepet_ekle=new Button(MainActivity.this);
 
                     yeniurungoruntule_cloum.setLayoutParams(yeniurungoruntule_kalip_cloum.getLayoutParams());
-                   //img_yeniurun.setLayoutParams(img_yeniurun_kalip.getLayoutParams());
+                    //img_yeniurun.setLayoutParams(img_yeniurun_kalip.getLayoutParams());
                     txt_urunad.setLayoutParams(txt_urunad_kalip.getLayoutParams());
                     txt_urunfiyat.setLayoutParams(txt_urunfiyat_kalip.getLayoutParams());
                     btn_sepet_ekle.setLayoutParams(btn_sepet_ekle_kalip.getLayoutParams());
 
                     yeniurungoruntule_cloum.setOrientation(LinearLayout.VERTICAL);
                     yeniurungoruntule_cloum.setWeightSum(1);
-
-
-
-
 
 
 
@@ -332,7 +341,7 @@ ImageView imglogo;
                 Timber.i("katad #" + i + " : > " + kat.get(i).kat_ad);
                 Timber.i("katid #" + i + " : > " + kat.get(i).kat_id);
                 Timber.i("anakatid #" + i + " : > " + kat.get(i).anakat_id);
-                menu.add(R.id.grupp, Menu.NONE, Menu.NONE, kat.get(i).kat_ad);
+                menu.add(R.id.group1, Menu.NONE, Menu.NONE, kat.get(i).kat_ad);
 
 
             }

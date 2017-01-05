@@ -7,6 +7,8 @@ import com.google.gson.annotations.SerializedName;
  */
 public class yeniurun {
 
+    @SerializedName("urun_id")
+    public int urun_id;
     @SerializedName("urun_ad")
     public String urun_ad;
     @SerializedName("urun_fiyat")

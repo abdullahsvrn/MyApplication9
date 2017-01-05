@@ -7,13 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 public class Kayit extends AppCompatActivity {
     EditText ad,soyad;
     ScrollView scrollView;
 Button kayit;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +22,7 @@ Button kayit;
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Kayit.this, MainActivity.class);
-                Toast.makeText(getApplicationContext(), "Kullanıcı İd Yada Kullanıcı Şifre Yanlış!", Toast.LENGTH_LONG).show();
+
                 startActivity(intent);
 
 
