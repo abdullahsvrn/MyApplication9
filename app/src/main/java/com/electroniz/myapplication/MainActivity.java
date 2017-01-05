@@ -311,6 +311,24 @@ public class MainActivity extends AppCompatActivity
                     img_yeniurun.setImageBitmap(yeni_urunresimleri[i + j]);
                     img_yeniurun.setMinimumWidth(1000);
                     img_yeniurun.setMinimumHeight(600);
+                    img_yeniurun.setId(yeniuruns.get(i + j).urun_id);
+                    img_yeniurun.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            int id;
+                            id=v.getId();
+
+                            Intent intent = new Intent(MainActivity.this, UrundetayActivity.class);
+                            Bundle xxx=new Bundle();
+                            xxx.putInt("intent",id);
+                            intent.putExtras(xxx);
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
                     txt_urunad.setText(yeniuruns.get(i + j).urun_ad);
                     txt_urunad.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                     txt_urunfiyat.setText(yeniuruns.get(i + j).urun_fiyat);
